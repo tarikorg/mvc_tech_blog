@@ -15,17 +15,17 @@ function isAuth(req,res,next){
 //     next();
 // }
 
-const getUserName = async (userId)=>{
-    const user = await User.findByPk(userId)
-    return user.username
+// const getUserName = async (userId)=>{
+//     const user = await User.findByPk(userId)
+//     return user.username
 
-}
+// }
 
 //homepage
 async function renderHomepage(req,res){
     try{
         const posts = await Post.findAll({
-            include: [{model: User, attributes: ['username']}, {model: Comment}], // display the username of the user who created the post
+            include: [{model: User, attributes: ['username']}, {model: Comment, include: User}], // display the username of the user who created the post
             order: [['created_at', 'DESC']] // display the posts in descending order by the created at value
         })
         const post = posts.map(post => post.get({plain: true})) 
@@ -33,11 +33,11 @@ async function renderHomepage(req,res){
 
       //call the getUserName function to get the username
       //then map through the comments and add the username to each comment
-            post.forEach(post => {
-                post.comments.forEach(async comment => {
-                    comment.username = await getUserName(comment.userId)
-                })
-            })
+            // post.forEach(post => {
+            //     post.comments.forEach(async comment => {
+            //         comment.username = await getUserName(comment.userId)
+            //     })
+            // })
             
             
             
