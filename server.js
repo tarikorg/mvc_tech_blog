@@ -10,6 +10,7 @@ const routes = require('./routes')
 const path = require('path')
 
 const sequelize = require('./config/config')
+const { max } = require('./models/User')
 
 const app = express()
 
@@ -23,11 +24,18 @@ const sessions = {
     saveUninitialized: true,
     store: new SequelizeStore({
         db: client
-    })
+    }),
+    // cookie: { maxAge: 60000}//cookie expires in 1 minute
+
 }
+
+
+
 
 //session middleware
 app.use(session(sessions))
+
+
 
 app.use(express.json())
 //we are going to fill out forms,search stuff up

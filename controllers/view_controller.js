@@ -8,6 +8,13 @@ function isAuth(req,res,next){
     next()
 }
 
+
+// function updateSession(req, res, next) {
+//     req.session._garbage = Date();
+//     req.session.touch();
+//     next();
+// }
+
 const getUserName = async (userId)=>{
     const user = await User.findByPk(userId)
     return user.username
@@ -33,7 +40,7 @@ async function renderHomepage(req,res){
             })
             
             
-            console.log(post[0].comments)
+            
            
             res.render('homepage', {post, isLogged: req.session.userId ? true : false, user: req.session.userId})
         }catch(err){
