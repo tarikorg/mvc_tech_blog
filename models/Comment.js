@@ -35,8 +35,10 @@ Comment.init(
     },
     {
         sequelize: client,
+        freezeTableName: true,
+        underscored: true,
         modelName: 'comment',
-        timestamps: false
+        
     }
 )
 

@@ -14,17 +14,19 @@ const comment_controller = {
             
             const commentData = req.body
             const postId = req.params.id
-            const userId = req.session.user.id
-            const newComment = await Comment.create({
+            const userId = req.session.userId
+            const test =await Comment.create({
                 ...commentData,
-                postId,
-                userId
+                userId,
+                postId
             })
 
-            res.redirect(`/post/${postId}`) 
+            console.log(test)
+
+            res.redirect(`/`) 
         }catch(err){
             console.log(err)
-            res.json(err)
+            
         }
     }
 

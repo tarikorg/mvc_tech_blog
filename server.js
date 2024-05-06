@@ -1,6 +1,9 @@
 const express = require('express')
 const session = require('express-session')
 const client= require('./config/config')
+const {engine} = require('express-handlebars')
+
+require('dotenv').config()
 
 const SequelizeStore = require('connect-session-sequelize')(session.Store)
 const routes = require('./routes')
@@ -31,6 +34,9 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
 app.use(express.static(path.join(__dirname, 'public')))
+
+app.engine('handlebars', engine())//set the view engine to handlebars
+app.set('view engine', 'handlebars')//use handlebars as view engine
 
 //import routes folder
 app.use(routes)

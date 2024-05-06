@@ -38,6 +38,8 @@ User.init(
     {
         sequelize: client,
         modelName: 'user',
+        underscored: true,
+        freezeTableName: true,
         hooks: {
             beforeCreate: async (newData) => {
                 newData.password = await bcrypt.hash(newData.password, 10)//encrypt the new password recieved
@@ -48,8 +50,7 @@ User.init(
                 updatedData.password = await bcrypt.hash(updatedData.password, 10)
                 return updatedData
             }
-        },
-        timestamps: false
+        }
 
     }
 )

@@ -1,13 +1,13 @@
 const { Model, DataTypes } = require('sequelize')
 const client = require('../config/config')// connection to sequelize
 
+
 class Post extends Model { }
 
 Post.init(
     {
         id: {
             type: DataTypes.INTEGER,
-            allowNull: false,
             primaryKey: true,
             autoIncrement: true
         },
@@ -30,8 +30,9 @@ Post.init(
     },
     {
         sequelize: client,
-        modelName: 'post',
-        timestamps: false
+        freezeTableName: true, // don't change the table name to plural
+        underscored: true, //use snake_case for column names
+        modelName: 'post'
     }
 )
 
