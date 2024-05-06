@@ -25,7 +25,7 @@ const sessions = {
     store: new SequelizeStore({
         db: client
     }),
-    // cookie: { maxAge: 60000}//cookie expires in 1 minute
+    cookie: { maxAge: 600000} //cookie expires in 1 minute
 
 }
 
