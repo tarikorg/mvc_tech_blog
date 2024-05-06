@@ -19,7 +19,7 @@ async function renderHomepage(req,res){
     try{
         const posts = await Post.findAll({
             include: [{model: User, attributes: ['username']}, {model: Comment}], // display the username of the user who created the post
-            order: [['created_at', 'DESC']] // display the posts in descending order
+            order: [['created_at', 'DESC']] // display the posts in descending order by the created at value
         })
         const post = posts.map(post => post.get({plain: true})) 
         //convert the posts to plain objects
