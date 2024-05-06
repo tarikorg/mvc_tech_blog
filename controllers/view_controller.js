@@ -75,7 +75,7 @@ async function login(req,res){
 
             //if the user does not exist
             if(!user){
-                res.send({message: 'Incorrect username or password'})
+                res.redirect('/login')
                 return
             }
 
@@ -84,7 +84,7 @@ async function login(req,res){
 
             //if the password is incorrect
             if(!validPassword){
-                res.send({message: 'Incorrect username or password'})
+                res.redirect('/login')
                 return
             }
 
