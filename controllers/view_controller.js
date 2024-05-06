@@ -9,17 +9,7 @@ function isAuth(req,res,next){
 }
 
 
-// function updateSession(req, res, next) {
-//     req.session._garbage = Date();
-//     req.session.touch();
-//     next();
-// }
 
-// const getUserName = async (userId)=>{
-//     const user = await User.findByPk(userId)
-//     return user.username
-
-// }
 
 //homepage
 async function renderHomepage(req,res){
@@ -31,14 +21,6 @@ async function renderHomepage(req,res){
         const post = posts.map(post => post.get({plain: true})) 
         //convert the posts to plain objects
 
-      //call the getUserName function to get the username
-      //then map through the comments and add the username to each comment
-            // post.forEach(post => {
-            //     post.comments.forEach(async comment => {
-            //         comment.username = await getUserName(comment.userId)
-            //     })
-            // })
-            
             
             
            

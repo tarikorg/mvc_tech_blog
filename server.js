@@ -10,7 +10,7 @@ const routes = require('./routes')
 const path = require('path')
 
 const sequelize = require('./config/config')
-const { max } = require('./models/User')
+
 
 const app = express()
 
